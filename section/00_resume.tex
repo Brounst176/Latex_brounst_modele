@@ -1,0 +1,70 @@
+\section*{Résumé}
+\addcontentsline{toc}{subsection}{Résumé}
+Ce mémoire propose une alternative innovante pour améliorer la visualisation des projets de construction lors de la mise à l'enquête publique. Traditionnellement, les gabarits de construction permettent de visualiser l’emprise du bâtiment sur le terrain, mais ils ne montrent pas les éléments architecturaux détaillés tels que les balcons, les fenêtres, les avant-toits ou les décrochements de façade. Bien que ces éléments soient présents sur des plans ou des maquettes 3D, leur compréhension reste difficile pour les riverains non familiarisés avec ces représentations techniques.
+
+L'objectif de ce travail est de permettre une visualisation complète et compréhensible du projet sur le terrain via une photo prise par un voisin. Pour ce faire, le projet repose sur plusieurs étapes clés :
+\begin{itemize}
+    \item le calcul du référencement et de l'orientation des photos,
+    \item la définition des paramètres de calibration de l'appareil photographique,
+    \item l'élaboration d'une carte de profondeur,
+    \item l'évaluation de la visibilité du projet sur l'image,
+    \item la création d'un rendu texturé du projet le plus réaliste possible.
+\end{itemize}
+Cette approche vise à rendre la visualisation d’un projet plus accessible et intuitive pour l’ensemble des parties prenantes : riverains, architectes, autorités communales ou cantonales. Elle peut ainsi faciliter la compréhension du projet, améliorer la transparence du processus de mise à l’enquête et soutenir les démarches de concertation.
+
+\vspace{0.5cm}
+\underline{Mot-clé :} 
+Photogrammétrie, Projet de construction, Gabarits, Programmation, Carte de profondeur, Photomontage
+
+\vspace{1.5cm}
+% \section*{Abstract}
+% This thesis proposes an innovative alternative to improve the visualization of construction projects during the public inquiry process. Traditionally, construction templates allow for visualizing the footprint of the building on the site, but they do not show detailed architectural elements such as balconies, windows, eaves, or façade projections. Although these elements are represented in plans or 3D models, their understanding remains challenging for neighbors who are not familiar with these technical representations.
+
+% The objective of this work is to provide a complete and understandable visualization of the project on-site through a photo taken by a neighbor. To achieve this, the project relies on several key steps: 
+% \begin{itemize}
+%     \item Calculating the referencing and orientation of the photos, 
+%     \item Defining the camera calibration parameters,
+%     \item Developing a depth map,
+%     \item Evaluating the visibility of the project in the image,
+%     \item Creating the most realistic textured rendering of the project possible.
+% \end{itemize}
+
+% This approach aims to make the visualization of a project more accessible and intuitive for all neighbors, regardless of their technical knowledge.
+
+% \vspace{0.5cm}
+% \underline{Keywords}: Photogrammetry, Construction Project, Templates, Programming, Depth Map
+\newpage
+\section*{Remerciements}
+\addcontentsline{toc}{subsection}{Remerciements}
+Je tiens à exprimer ma profonde gratitude à toutes les personnes qui ont contribué par leur aide à la réalisation de ce travail de master :
+\begin{itemize}[itemsep=1em]
+    \item Monsieur Adrien Gressin, Dr. ing. ENSG, professeur à la HEIG-VD et directeur de ce travail, pour ses conseils avisés, sa disponibilité et son accompagnement tout au long du projet. Son expertise et ses retours pertinents ont grandement contribué à la qualité de ce travail.
+    \item Monsieur Sébastien Hämmerli, expert de ce travail, pour l’intérêt porté à mon travail et les remarques effectuées lors de la défense intermédiaire.
+    \item Monsieur Raphaël Guenat, Architecte HES/SIA et Directeur de l'atelier PAT architecte SA, pour la fourniture de la maquette 3D d'un futur projet de construction.
+    \item Madame Véronique et Monsieur Marc-Henry Keuffer Dit Barrelet, propriétaire du projet de construction, pour leur autorisation d'utilisation et pour m'avoir permis d'accéder à leur parcelle.
+    \item Madame Corinne Della Casa, pour la relecture du rapport.
+    \item Le bureau d'étude Rossier SA, pour m'avoir permis d'utiliser leur système de mesure GNSS.
+\end{itemize}
+
+\newpage
+\section*{Abréviations}
+\addcontentsline{toc}{subsection}{Abréviations}
+\begin{table*}[h]
+    \begin{tabular}{>{\bfseries}P{3cm}@{}c@{\hspace{0.2cm}}P{12cm}}
+        Orientation externe &:& Position et orientation d'une photographie\\
+        Calibration interne & :&  Détermination des paramètres internes de correction d'un appareil photo\\
+        IA  & :& Intelligences artificielles\\
+        RA & :& Réalité augmentée\\
+        depthmapIA & : &Valeur issue d'une carte de profondeur obtenue avec de l'IA\\
+        dproj & :& Distance projetée sur un plan, ici sur le plan image des photographies\\
+        uv& : &Coordonnées d'un pixel sur une image \\
+        valuesdepthmap & :& Jeux de donnée (uv, depthmapIA, dproj)\\
+        GCP & :& Points de contrôle au sol (Ground Control Points)\\
+        GPU & : &Processeur graphique permettant de faire des calculs mathématiques à grande vitesse (Graphics Processing Unit)\\
+        CPU & : &Processeur central de traitement (Central Processing Unit)\\
+        RLATC & :& Règlement d'application sur l'aménagement du territoire et les constructions du canton de Vaud\\
+        ReLATeC & :& Règlement d'exécution de la loi sur l'aménagement du territoire et les constructions du canton de Fribourg\\
+        WKT & : &Well-Know Text, format standard en mode texte utilisé pour représenter des objets géométriques vectoriels\\
+        EPSG & : &European Petroleum Survey Group, liste de code associé à des systèmes de coordonnées
+    \end{tabular}
+\end{table*}

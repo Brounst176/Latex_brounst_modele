@@ -1,0 +1,192 @@
+
+\newcommand{\titlereport}{Modèle de base}
+\newcommand{\studyname}{Résumé }
+% \newcommand{\studyname}{Intégration automatique de futurs bâtiments dans une photographie}
+\newcommand{\datedoc}{\today}
+\newcommand{\datenumber}{{\number\day.\number\month.\number\year}}
+\newcommand{\prof}{Adrien GRESSIN}
+\newcommand{\descrVarEq}[2]{#1\textrm{ : }&\textrm{#2}}
+\newcommand{\avec}{\textrm{\qquad avec}}
+\newcommand{\donc}{\textrm{\qquad et donc}}
+\newcommand{\figurecentre}[3][7]{
+	\begin{figure}[H]
+		\includegraphics[width=#1cm,center]{#2}
+		\caption{#3}
+	\end{figure}
+}
+\newcommand{\reminterne}[1]{{\color{red}\textbf{#1}}}
+\newcommand{\bfit}[1]{\textbf{\textit{#1}}}
+
+\usepackage{xparse}
+\NewDocumentCommand{\paragraphtitle}{O{0.8em} m}{%
+  \vspace{#1}%
+  \hspace*{0.cm}%
+  \textbf{\textit{\normalsize #2}}%
+  \vspace{0.5em}%
+}
+
+\newcommand{\sourcefootnotehref}[1]{
+	\footnotetext{source : \href{#1}{#1}}
+}
+
+\newcommand{\scu}{
+	\begin{tikzpicture}[axis/.style={thick,->}]
+		\coordinate (O) at (0, 0, 0);
+		\draw[axis] (O) -- +(0.3, 0, 0);
+		\draw[axis] (O) -- +(0, 0.3, 0);
+		\draw[axis] (O) -- +(0, 0, 0.3);
+	\end{tikzpicture}
+}
+\newcommand{\scuxyz}{
+	\begin{tikzpicture}[axis/.style={thick,->}]
+		\coordinate (O) at (0, 0, 0);
+		\draw[axis] (O) -- +(1, 0, 0) node [right] {$X$};
+		\draw[axis] (O) -- +(0, 1, 0) node [right] {$Y$};
+		\draw[axis] (O) -- +(0, 0, 1) node [above] {$Z$};
+	\end{tikzpicture}
+}
+\newcommand{\norm}[1]{\left\lVert \vec{#1} \right\rVert}
+\newcommand\myemptypage{
+		\null
+		\thispagestyle{empty}
+		\addtocounter{page}{-1}
+		\newpage
+	}
+% Language settings
+\usepackage[french]{babel}
+
+%fontfamily
+\usepackage[T1]{fontenc}
+% \usepackage{lmodern}
+% \fontfamily{cmr}\selectfont
+
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+
+% \usepackage{fontspec}
+% \setmainfont{Comic Sans MS}
+
+% \usepackage{palatino}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage[export]{adjustbox}
+\usepackage{graphicx}
+
+
+\usepackage{ragged2e}  % Meilleure gestion des retours à la ligne
+
+\usepackage{microtype}%gestion des césrure (retour à la ligne des grands mot avec un -)
+% GESTION DES TABLEAUX
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{array}
+% \usepackage{longtable}
+\usepackage{esvect}
+\graphicspath{ {./images/} }
+\usepackage{geometry}
+% \usepackage{mathtools}
+\usepackage{amsmath}
+% \usepackage{mathptmx}  % Utilise la police Times New Roman pour les mathématiques
+% \everymath{\small}
+% \usepackage[bitstream-charter]{mathdesign}
+% \usepackage{subfigure}
+\usepackage{caption}
+\usepackage{tikz}
+\usepackage{subcaption}
+\usepackage{enumitem}
+% \usepackage{amssymb}
+\usepackage{float}
+\usepackage{blindtext}
+\setcounter{tocdepth}{2} %combien de niveau sont indiqué dans la table des matières
+\usepackage[%
+	hidelinks
+]{hyperref} % referencing inside document (click on links) - has to be loaded as last !
+\usepackage{footmisc} %note de base de page
+%page vide
+\usepackage{afterpage}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{titlesec}
+
+\titleformat{\section}
+  {\normalfont\LARGE\bfseries} % taille, police
+  {\thesection}{1em}{\MakeUppercase}        % numérotation, espacement
+\titleformat{\subsection}
+  {\normalfont\Large\bfseries}
+  {\thesubsection}{1em}{}
+
+\titleformat{\subsubsection}
+  {\normalfont\large\bfseries}
+  {\thesubsubsection}{1em}{}
+
+\usepackage{cleveref} % Paquet pour des références plus intelligentes
+\usepackage{booktabs} %Tableau simplifié
+\usepackage{moreverb} %vertbatimtabl
+\usepackage{alltt}
+%Bibliographie
+% \usepackage{csquotes}
+% % \usepackage[
+% % 	backend=biber,
+% % 	style=alphabetic,
+% % 	sorting=ynt
+% % 	]{biblatex}
+% \usepackage[backend=biber,style=apa, giveninits=true,sorting=ynt, language=french]{biblatex}  
+% \addbibresource{biblio.bib}
+% \usepackage[numbers]{natbib}
+\usepackage{cite}
+
+
+\geometry{right=2cm, left=2cm, top=2cm, bottom=2.5cm} % Indique les dimensions des marges
+\setlength\parindent{0pt} % Indique le décalage au début des paragraphes
+\setlength{\parskip}{4pt} % Indique l'espace entre chaque "paragraphe"
+\setlength{\arrayrulewidth}{0.2mm}
+\setlength{\tabcolsep}{18pt}
+\setlength{\headheight}{1.6pt}
+\setcounter{MaxMatrixCols}{20}
+\addtolength{\jot}{0.5em} % Espace entre les équations alignée en verticale
+\setlist{before=\vspace{1pt},after=\vspace{2pt}} %Marge verticale avant et après avec les itemize
+\setlist[itemize,1]{nosep, topsep=5pt, partopsep=2pt, itemsep=1.5pt, parsep=1.5pt, leftmargin=3em}
+\setlist[itemize,2]{nosep, topsep=2pt, partopsep=2pt, itemsep=1.5pt, parsep=1.5pt, leftmargin=2em}
+\setlist[enumerate,1]{nosep, topsep=5pt, partopsep=2pt, itemsep=1.5pt, parsep=1.5pt, leftmargin=3em}
+\setlist[enumerate,2]{nosep, topsep=2pt, partopsep=2pt, itemsep=1.5pt, parsep=1.5pt, leftmargin=2em}
+
+
+
+
+%paramètre tableau
+\setlength{\tabcolsep}{18pt}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\head}[1]{%
+\textcolor{white}{\textbf{#1}}}
+\definecolor{mygraylight}{rgb}{.9,.9,.9}
+% \rowcolors{2}{lightgray}{mygraylight}
+
+
+%paramètre enumarte
+\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}}
+\renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}}
+\renewcommand{\labelenumiv}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}}
+
+
+% Informations du mémoire
+\title{\titlereport}
+\author{Bruno Della Casa Nom}
+\date{\datedoc}
+
+
+%====================== INFORMATION ET REGLES ======================
+
+%rajouter les numérotation pour les \paragraphe et \subparagraphe
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
+\hypersetup{							% Information sur le document
+pdfauthor = {Della Casa Bruno},			% Auteurs
+pdftitle = {résumée},			% Titre du document
+pdfsubject = {résumé},		% Sujet
+pdfkeywords = {latex},	% Mots-clefs
+pdfstartview={FitH}}					% ajuste la page à la largueur de l'écran
+%pdfcreator = {MikTeX},% Logiciel qui a crée le document
+%pdfproducer = {}} 

@@ -1,0 +1,55 @@
+\documentclass[a4paper,titlepage, table]{article}
+
+\input{setting}
+
+\begin{document}
+%paramètre itemize
+\renewcommand{\labelitemi}{$\bullet$}
+\renewcommand{\labelitemii}{$\circ$}
+\renewcommand{\labelitemiii}{$-$}
+\renewcommand{\labelitemiv}{$\circ$}
+\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}m{#1}} %colone de tableau sans texte justifié
+\newcolumntype{P}[1]{>{\RaggedRight\arraybackslash}p{#1}}
+\titlespacing*{\subsubsection}{15pt}{\baselineskip}{0.2\baselineskip} % 1er élément indentation et 2ème espace en-dessous
+\tolerance=5000 %augementation de la tolérance des coupures
+
+\input{section/00_titlepage2}
+\myemptypage
+\newpage
+\pagenumbering{Roman}
+\input{section/00_resume.tex}
+\newpage
+\addcontentsline{toc}{subsection}{Table des matières}
+\tableofcontents
+\newpage
+\addcontentsline{toc}{subsection}{Table des figures}
+\listoffigures
+\newpage
+\addcontentsline{toc}{subsection}{Liste des tableaux}
+\listoftables
+\newpage
+
+% Paramètre d'en-tête et de pied de page
+\pagenumbering{arabic}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\leftmark}
+% \fancyhead[L]{\textbf{\titlereport}}
+\fancyfoot[L]{\datenumber}
+\fancyfoot[R]{\thepage/\pageref{LastPage}}
+
+\setlength{\headheight}{22.6pt}
+\input{section/01_introduction}
+
+
+\newpage
+
+\bibliographystyle{apalike-fr}
+
+\renewcommand{\refname}{Bibliographie} %Pour les articles
+\renewcommand{\bibname}{Bibliographie} %Pour les thèses/livres
+\bibliography{biblio}
+\nocite{*}
+
+
+\end{document}

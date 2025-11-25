@@ -1,0 +1,162 @@
+\section{Introduction}
+Ce document sert à reproduire un modèle Latex défini et une méthodologie pour créer des rapports Latex.
+\section{Fonction mathématique}
+
+\begin{equation}
+    \boxed{m = F - \frac{k^TFR(M-S)}{k^T R(M-S)}}\\
+    \label{colin}
+\end{equation}
+\begin{align*}
+    x_m&=x_c+f\cdot\frac{r_{11}(X_M-X_S)+r_{21}(Y_M-Y_S)+r_{31}(Z_M-Z_S)}{r_{13}(X_M-X_S)+r_{23}(Y_M-Y_S)+r_{33}(Z_M-Z_S)}\\
+    y_m&=y_c+f\cdot\frac{r_{12}(X_M-X_S)+r_{22}(Y_M-Y_S)+r_{32}(Z_M-Z_S)}{r_{13}(X_M-X_S)+r_{23}(Y_M-Y_S)+r_{33}(Z_M-Z_S)}\\
+    z_m&=0
+\end{align*}
+
+\begin{align*}
+    \descrVarEq{\scu^{cam}=(o,x,y,z)}{Système de coordonnée de la caméra}\\
+    \descrVarEq{x,y}{Centre du capteur de l'image}\\
+    \descrVarEq{z}{Axe de la visée de l'appareil photo}\\
+    \descrVarEq{\scu^{glob}=(O,X,Y,Z)}{Système de coordonnées globale}\\
+    \descrVarEq{m=[x_m,y_m,0]}{Coordonnée d'un point terrain sur le capteur, z=0 dans $\scu^{cam}$}\\
+    \descrVarEq{M=[X_M,Y_M,Z_M]}{Coordonnée d'un point terrain dans $\scu^{glob}$}\\
+    \descrVarEq{S=[X_S,Y_S,Z_S]}{Coordonnée du point de la caméra dans $\scu^{glob}$}\\
+    R_{glob}^{cam}=R_\omega\cdot R_\phi\cdot R_\kappa=\begin{bmatrix}
+    r_{11}&r_{21}&r_{31}\\
+    r_{12}&r_{22}&r_{32}\\
+    r_{13}&r_{23}&r_{33}
+    \end{bmatrix}\textrm{ : }&\textrm{Matrice de rotation du $\scu^{glob}$vers $\scu^{cam}$}\\
+    \descrVarEq{F=[x_c,y_c,-f]}{Point S dans $\scu^{cam}$}\\
+    &\textrm{(Distance focale $f$)}\\
+    &\textrm{($x_c,y_c$ sont égales à 0 dans un modèle théorique)}\\
+\end{align*}
+\begin{equation}
+    \label{eq:transdlt}
+    L=\frac{-1}{\sqrt{L^2_9+L^2_{10}+L^2_{11}}}
+\end{equation} 
+\begin{align*}
+    x_c&\approx L^2(L_1L_9+L_2L_{10}+L_3L_{11})\\
+    y_c&\approx L^2(L_5L_9+L_6L_{10}+L_7L_{11})\\
+    c_x&\approx\sqrt{L^2(L^2_1+L^2_2+L^2_3)-x^2_c}\\
+    c_y&\approx\sqrt{L^2(L^2_5+L^2_6+L^2_7)-y^2_c}\\
+    p&\approx  (c_x+c_y)/2
+\end{align*}
+$$r_{11}\approx\frac{L(x_cL_9-L_1)}{c_x},r_{12}\approx\frac{L(y_cL_9-L_5)}{c_y},r_{13}\approx L\cdot L_9 $$
+$$r_{21}\approx\frac{L(x_cL_{10}-L_2)}{c_x},r_{22}\approx\frac{L(y_cL_{10}-L_6)}{c_y},r_{23}\approx L\cdot L_{10} $$
+$$r_{31}\approx\frac{L(x_cL_{11}-L_3)}{c_x},r_{32}\approx\frac{L(y_cL_{11}-L_7)}{c_y},r_{33}\approx L\cdot L_{11} $$
+\begin{equation*}
+    \begin{bmatrix}
+        X_S\\Y_S\\Z_S
+    \end{bmatrix}\approx -
+    \begin{bmatrix}
+        L_1&L_2&L_3\\
+        L_5&L_6&L_7\\
+        L_9&L_{10}&L_{11}\\
+    \end{bmatrix}^{-1}\cdot 
+    \begin{bmatrix}
+        L_4\\L_8\\1
+    \end{bmatrix}
+\end{equation*}
+
+\section{Tableau}
+
+\begin{table}[H]
+    \centering
+    
+    \begin{tabular}{c P{2.5cm} P{2.3cm} P{0.8cm} P{2.4cm}}
+    \toprule
+    \textbf{Classement} &\textbf{Code Git} & \textbf{Modèle IA} & \textbf{Année}  \\
+    \midrule
+    \small 1 & \small xuelunshen/gim &  \small GIM-RoMa & \small 2025  \\
+    \small 2 & \small xuelunshen/gim &  \small GIM-DKM & \small 2024 \\
+    \small 3 & \small parskatt/roma &  \small RoMa & \small 2023 \\
+    \small 4 & \small  parskatt/dkm &  \small DKM & \small 2022\\
+    \small 5 & \small xuelunshen/gim &  \small GIM-LoFTR & \small 2024 \\
+    \small 6 & \small xuelunshen/gim &  \small GIM-LightGlue & \small 2024  \\
+    \small 7 & \small zju3dv/LoFTR &  \small LoFTR & \small 2021 \\
+    \small 8 & \small  ubc-vision/image... &  \small RootSIFT & \small 2012\\
+    \small 9 & \small cvg/lightglue &  \small LightGlue & \small 2023  \\
+    \small 10 & \small  magicleap/SuperGlue &  \small SuperGlue & \small 2019  \\
+    \addlinespace
+
+    \bottomrule
+    \end{tabular}
+    \caption{Classement des modèles IA de détermination de points homologues}
+    \label{tabiaimagematching}
+\end{table}
+
+
+\begin{table}[H]
+    \centering
+{\tiny
+        \renewcommand{\arraystretch}{2.5}
+        \fontsize{10pt}{10pt}\selectfont
+        \begin{tabular}{|>{\footnotesize}L{1.5cm}|>{\footnotesize}L{3cm}|>{\footnotesize}L{3cm}|}
+            \hline
+            \rowcolor{gray!30} % Couleur de fond de l'en-tête
+            \textbf{Paires d'images} & \vphantom{g}\textbf{IA LightGlue} & \vphantom{g}\textbf{Algorithme de type SIFT de Agisoft}\\
+            \hline
+        \end{tabular}
+        \renewcommand{\arraystretch}{1.5}
+        \begin{tabular}{|>{\footnotesize}L{1.5cm}|>{\footnotesize}L{3cm}|>{\footnotesize}L{3cm}|}
+            1 &Valide : 134 points \newline \underline{Invalide : 29 points}\newline \vspace{0.5em} Total : 163 points  &  Valide : 5 points \newline \underline{Invalide : 5 points}\newline  \vspace{0.5em} Total : 10 points \\
+            \hline
+            2 & Valide : 19 points \newline \underline{Invalide : 28 points}\newline \vspace{0.5em}  Total : 47 points & Valide : 0 points \newline \underline{Invalide : 0 points} \newline \vspace{0.5em}  Total : 0 points \\
+            \hline
+        \end{tabular}}
+        \caption{Comparaison de la détection de points via l'IA LightGlue et via le logiciel Agisoft}
+        \label{tabcompdetect}
+\end{table}
+
+\section{Figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=5cm]{latex_logo.png}
+    \caption[Logo latex]{Logo latex \footnotemark}
+    \label{fig:latex}
+\end{figure}
+\sourcefootnotehref{https://www.latex-project.org/}
+
+\section{Divers}
+\begin{itemize}
+    \item Orientation externe
+    \begin{itemize}
+        \item La position de l'image cible $S_{cible}=[X_{cible},Y_{cible},Z_{cible}]$
+        \item L'orientation de l'image $R_\omega, R_\phi, R_\kappa$
+    \end{itemize}
+    \item Calibration interne (modèle \og Frame \fg de Agisoft)
+    \begin{itemize}
+        \item Le point principal d'autocollimation $PPA=[x_c,y_c]$
+        \item La focale $f$
+        \item Les coefficients de distorsions radiale ($k_{1-4}$), tangentielle ($p_{1-2}$) et affine ($b_{1-2}$)
+    \end{itemize}
+\end{itemize}
+
+\begin{enumerate}
+    \item Modèle photogrammétrique du lieu (calcul par aérotriangulation avec Agisoft)
+    \item Recherche des points homologues entre une image utilisateur\footnote{Image acquise par un utilisateur dont les calibrations ne sont pas connues} et les images du modèle de base
+    \item Détermination approximative des paramètres de calcul
+    \begin{itemize}
+        \item Détermination des coordonnées 3D des points homologues et filtre par reprojection
+        \item Détermination de la position et de l'orientation approchée de l'image utilisateur avec la DLT et filtre des valeurs aberrantes avec les écarts aux observations
+    \end{itemize}
+    \item Détermination précise de l’orientation externe et de la calibration interne
+    \begin{itemize}
+        \item Calcul de la position de l'orientation et de la focale de l'image utilisateur par moindre carré non linéaire grâce à la détermination approximative et filtre des valeurs aberrantes avec les résidus normées.
+        \item Calcul de la position de l'orientation, de la focale, du PPA et des distorsions par moindre carré non linéaire.
+    \end{itemize} 
+\end{enumerate}
+
+\begin{itemize}
+    \item un facteur de proximité spatiale, défini par la formule : \\
+    $
+\text{poids}_{\text{distance}} = 
+\begin{cases}
+1 - \dfrac{\text{dist}}{70}, & \text{si } \text{dist} < 70 \\
+0.0000001, & \text{sinon}
+\end{cases}
+$\\ \\
+\textit{\small La valeur déterminante de 70m a été choisie de manière empirique.}\\
+\item un facteur d’orientation, calculé à l’aide du produit scalaire entre les vecteurs d’orientation (résultant en une valeur entre -1 et 1, soit le cosinus de l’angle).
+\end{itemize}
+\og Dès le XIX\up{e} siècle, les photographies retravaillées ont été utilisées dans des présentations pour illustrer l'impact d'un projet sur la vue urbaine et le paysage.\fg \cite{pousin:photomontage}(voir Figure \ref{fig:latex} à la page \pageref{fig:latex})
