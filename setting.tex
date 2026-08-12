@@ -157,12 +157,21 @@
 
 
 %paramètre tableau
-\setlength{\tabcolsep}{18pt}
+\usepackage{etoolbox}
+% Taille de police générale pour TOUS les tableaux (tabular / tabularx) :
+% remplacer \small par \footnotesize ou \scriptsize ci-dessous pour réduire davantage.
+\AtBeginEnvironment{tabular}{\small}
+\AtBeginEnvironment{tabularx}{\small}
+\setlength{\tabcolsep}{10pt}
 \renewcommand{\arraystretch}{1.5}
 \newcommand{\head}[1]{%
 \textcolor{white}{\textbf{#1}}}
 \definecolor{mygraylight}{rgb}{.9,.9,.9}
-% \rowcolors{2}{lightgray}{mygraylight}
+\definecolor{accent}{RGB}{190, 60, 40}
+\definecolor{link}{RGB}{30, 90, 160}
+\definecolor{tableheader}{RGB}{220, 230, 245}
+\definecolor{codebg}{RGB}{245, 247, 250}
+\newenvironment{terme}[1]{\paragraphtitle{#1}\par}{\par}
 
 
 %paramètre enumarte
