@@ -1,7 +1,6 @@
 
 \newcommand{\titlereport}{Modèle de base}
 \newcommand{\studyname}{Résumé }
-% \newcommand{\studyname}{Intégration automatique de futurs bâtiments dans une photographie}
 \newcommand{\datedoc}{\today}
 \newcommand{\datenumber}{{\number\day.\number\month.\number\year}}
 \newcommand{\prof}{Adrien GRESSIN}
@@ -78,20 +77,16 @@
 \usepackage{ragged2e}  % Meilleure gestion des retours à la ligne
 
 \usepackage{microtype}%gestion des césrure (retour à la ligne des grands mot avec un -)
+
+
 % GESTION DES TABLEAUX
 \usepackage{multicol}
 \usepackage{multirow}
 \usepackage{array}
-% \usepackage{longtable}
 \usepackage{esvect}
 \graphicspath{ {./images/} }
 \usepackage{geometry}
-% \usepackage{mathtools}
 \usepackage{amsmath}
-% \usepackage{mathptmx}  % Utilise la police Times New Roman pour les mathématiques
-% \everymath{\small}
-% \usepackage[bitstream-charter]{mathdesign}
-% \usepackage{subfigure}
 \usepackage{caption}
 \usepackage{tikz}
 \usepackage{subcaption}
@@ -127,15 +122,6 @@
 \usepackage{moreverb} %vertbatimtabl
 \usepackage{alltt}
 %Bibliographie
-% \usepackage{csquotes}
-% % \usepackage[
-% % 	backend=biber,
-% % 	style=alphabetic,
-% % 	sorting=ynt
-% % 	]{biblatex}
-% \usepackage[backend=biber,style=apa, giveninits=true,sorting=ynt, language=french]{biblatex}  
-% \addbibresource{biblio.bib}
-% \usepackage[numbers]{natbib}
 \usepackage{cite}
 
 
@@ -166,10 +152,14 @@
 \renewcommand{\arraystretch}{1.5}
 \newcommand{\head}[1]{%
 \textcolor{white}{\textbf{#1}}}
+\definecolor{primary}{RGB}{0, 0, 0}
+\definecolor{myreddark}{RGB}{107, 7, 7}
 \definecolor{mygraylight}{rgb}{.9,.9,.9}
 \definecolor{accent}{RGB}{190, 60, 40}
+\definecolor{green}{RGB}{50, 190, 40}
+\definecolor{violet}{RGB}{202, 117, 241}
 \definecolor{link}{RGB}{30, 90, 160}
-\definecolor{tableheader}{RGB}{220, 230, 245}
+\definecolor{tableheader}{RGB}{150, 150, 180}
 \definecolor{codebg}{RGB}{245, 247, 250}
 \newenvironment{terme}[1]{\paragraphtitle{#1}\par}{\par}
 
@@ -184,6 +174,97 @@
 \title{\titlereport}
 \author{\auteur}
 \date{\datedoc}
+
+
+% -- Code -----------------------------------------------------------------------
+\usepackage{listings}
+\lstset{
+  backgroundcolor=\color{codebg},
+  frame=single,
+  rulecolor=\color{coderule},
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  columns=flexible,
+  keepspaces=true,
+  xleftmargin=6pt,
+  xrightmargin=6pt,
+  aboveskip=8pt,
+  belowskip=8pt,
+}
+
+
+%====================== ENCADRÉS PÉDAGOGIQUES ======================
+% Encadré générique (définition, à retenir, exemple...) avec bandeau de titre coloré
+\newcommand{\encadretitre}[3][accent]{%
+	\par\vspace{0.4em}\noindent
+	\begin{tabular}{|p{\dimexpr\linewidth-2\tabcolsep-2\arrayrulewidth\relax}|}
+		\hline
+		\rowcolor{#1!85!black}\textcolor{white}{\textbf{#2}}\\
+		\rowcolor{#1!8}#3\\
+		\hline
+	\end{tabular}
+	\vspace{0.4em}\par
+}
+\newcommand{\definition}[1]{\encadretitre[link]{Définition}{#1}}
+\newcommand{\aretenir}[1]{\encadretitre[accent]{À retenir}{#1}}
+\newcommand{\exempleenc}[1]{\encadretitre[mygraylight]{Exemple}{#1}}
+
+%====================== ELEMENT POUR EXERCICE ======================
+% Encadré pour réponse et pour solution
+\newcommand{\reponseplace}[1]{
+\begin{tikzpicture}
+    % Carré rempli de couleur
+    \fill[black!5!white] (0,0) rectangle (17.0,2);
+    % Carré avec contour d'une autre couleur
+    \draw[thick, gray] (0,0) rectangle (17.0,2);
+    % Texte à l'intérieur
+    \node[anchor=north west, text width=16cm, inner sep=0.25cm] 
+        at (0,2) {\small\itshape\color{red!40!black} #1 };
+\end{tikzpicture}
+}
+
+
+\usepackage{tcolorbox}
+
+\newcommand{\reponseplaceautoheight}[1]{
+\begin{tcolorbox}[
+    colback=black!5!white,
+    colframe=gray,
+    boxrule=0.8pt,
+    arc=0pt,
+    left=4pt, right=4pt, top=4pt, bottom=4pt
+]
+\small\itshape\color{red!40!black} #1
+\end{tcolorbox}
+}
+
+
+%====================== LISTINGS (CODE PYTHON) ======================
+\lstdefinestyle{python}{
+	backgroundcolor=\color{codebg},
+	basicstyle=\ttfamily\small,
+	keywordstyle=\color{link}\bfseries,
+	commentstyle=\color{mygraylight!40!black}\itshape,
+	stringstyle=\color{accent},
+	numbers=none,
+	breaklines=true,
+	frame=single,
+	rulecolor=\color{mygraylight},
+	framerule=0.4pt,
+	xleftmargin=1em,
+	xrightmargin=0.5em,
+	showstringspaces=false,
+	tabsize=4,
+	language=Python,
+	extendedchars=true,
+	literate=
+		{á}{{\'a}}1 {à}{{\`a}}1 {â}{{\^a}}1 {é}{{\'e}}1 {è}{{\`e}}1 {ê}{{\^e}}1 {ë}{{\"e}}1
+		{î}{{\^i}}1 {ï}{{\"i}}1 {ô}{{\^o}}1 {ö}{{\"o}}1 {ù}{{\`u}}1 {û}{{\^u}}1 {ü}{{\"u}}1
+		{ç}{{\c c}}1 {œ}{{\oe}}1
+		{À}{{\`A}}1 {É}{{\'E}}1 {È}{{\`E}}1 {Ê}{{\^E}}1 {Ç}{{\c C}}1
+}
+\lstset{style=python}
+
 
 
 %====================== INFORMATION ET REGLES ======================
