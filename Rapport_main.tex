@@ -14,9 +14,6 @@
 \renewcommand{\labelitemiii}{$-$}
 \renewcommand{\labelitemiv}{$\circ$}
 
-% -- Tableaux ------------------------------------------------------------
-\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}m{#1}} %colone de tableau sans texte justifié
-\newcolumntype{P}[1]{>{\RaggedRight\arraybackslash}p{#1}}
 
 % -- Titres ----------------------------------------------------------------
 \titlespacing*{\subsubsection}{15pt}{\baselineskip}{0.2\baselineskip} % 1er élément indentation et 2ème espace en-dessous
@@ -54,20 +51,13 @@
 % EN-TÊTE ET PIED DE PAGE (numérotation arabe)
 %====================================================================
 \pagenumbering{arabic}
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[R]{\leftmark}
-% \fancyhead[L]{\textbf{\titlereport}}
-\fancyfoot[L]{\datenumber}
-\fancyfoot[R]{\thepage/\pageref{LastPage}}
-\setlength{\headheight}{22.6pt}
-
+\fancystandard
+% \fancyOnlyFoot
 
 %====================================================================
 % CONTENU
 %====================================================================
 \input{section/01_introduction}
-
 
 \newpage
 
