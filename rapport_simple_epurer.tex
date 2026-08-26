@@ -1,0 +1,65 @@
+\documentclass[a4paper,titlepage, table]{article}
+
+\input{setting}
+
+\begin{document}
+
+%====================================================================
+% PARAMÈTRES LOCAUX AU DOCUMENT
+%====================================================================
+\titleformat{\section}
+  {\normalfont\LARGE\bfseries}   % style du titre
+  {\thesection}                  % numéro
+  {1em}                          % espace entre numéro et titre
+  {\MakeUppercase}                             % rien avant le titre
+  [\titlerule]                   % --- ce qui vient APRÈS, collé au titre
+
+\titlespacing*{\section}
+  {0pt}                          % indentation gauche
+  {3.5ex plus 1ex minus .2ex}    % espace AVANT le titre
+  {2.0ex plus .2ex}              % espace APRÈS la ligne (avant le texte suivant)
+
+% -- Listes (itemize) --------------------------------------------------
+\renewcommand{\labelitemi}{$\bullet$}
+\renewcommand{\labelitemii}{$\circ$}
+\renewcommand{\labelitemiii}{$-$}
+\renewcommand{\labelitemiv}{$\circ$}
+
+% -- Titres ----------------------------------------------------------------
+\titlespacing*{\subsubsection}{15pt}{\baselineskip}{0.2\baselineskip} % 1er élément indentation et 2ème espace en-dessous
+
+% -- Divers ------------------------------------------------------------------
+\tolerance=5000 %augementation de la tolérance des coupures
+
+
+%====================================================================
+% PAGE DE TITRE 
+%====================================================================
+{\Huge\bfseries \titlereport\par}\vspace{0.0cm}
+\par\noindent\rule{\textwidth}{2pt}
+
+%====================================================================
+% EN-TÊTE ET PIED DE PAGE (numérotation arabe)
+%====================================================================
+\pagenumbering{arabic}
+% \fancystandard
+\fancyOnlyFoot
+
+%====================================================================
+% CONTENU
+%====================================================================
+\input{section/00_aide_latex.tex}
+
+\newpage
+
+%====================================================================
+% BIBLIOGRAPHIE
+%====================================================================
+\bibliographystyle{apalike-fr}
+\renewcommand{\refname}{Bibliographie} %Pour les articles
+\renewcommand{\bibname}{Bibliographie} %Pour les thèses/livres
+\bibliography{biblio}
+\nocite{*}
+
+
+\end{document}

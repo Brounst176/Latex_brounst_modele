@@ -2,12 +2,14 @@
 %====================================================================
 % INFORMATIONS DU DOCUMENT
 %====================================================================
-\newcommand{\titlereport}{Modèle de base}
-\newcommand{\subtitle}{Résumé }
+\newcommand{\titlereport}{Titre}
+\newcommand{\subtitle}{Nom du cours}
 \newcommand{\datedoc}{\today}
 \newcommand{\datenumber}{{\number\day.\number\month.\number\year}}
-\newcommand{\prof}{Adrien GRESSIN}
-\newcommand{\auteur}{Bruno Della Casa}
+\newcommand{\prof}{Dr. Perceval de Galles}
+\newcommand{\auteur}{Provençal le Gaulois}
+\newcommand{\expert}{Alexandre Astier}
+\newcommand{\nummemoire}{xxxx}
 
 
 %====================================================================
@@ -234,7 +236,22 @@
 %====================================================================
 \titleformat{\section}
   {\normalfont\LARGE\bfseries} % taille, police
-  {\thesection}{1em}{\MakeUppercase}        % numérotation, espacement
+  {\thesection}{1em}{\MakeUppercase} % numérotation, espacement
+
+% -- SECTION AVEC LIGNE EN DESSOUS ----------------------------------
+
+% \titleformat{\section}
+%   {\normalfont\LARGE\bfseries}   % style du titre
+%   {\thesection}                  % numéro
+%   {1em}                          % espace entre numéro et titre
+%   {\MakeUppercase}                             % rien avant le titre
+%   [\titlerule]                   % --- ce qui vient APRÈS, collé au titre
+
+% \titlespacing*{\section}
+%   {0pt}                          % indentation gauche
+%   {3.5ex plus 1ex minus .2ex}    % espace AVANT le titre
+%   {2.0ex plus .2ex}              % espace APRÈS la ligne (avant le texte suivant)
+
 \titleformat{\subsection}
   {\normalfont\Large\bfseries}
   {\thesubsection}{1em}{}
