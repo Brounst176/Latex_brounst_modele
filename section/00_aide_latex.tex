@@ -132,7 +132,43 @@ Voir Figure \ref{sec:lien} à la page \pageref{sec:lien}  \verb|\label{} \ref{} 
     4 & Canon EOS 700D avec obj.\ de 10\,mm & Trépied avec Rollei 200 Mark II \\
     \bottomrule
   \end{tabularx}
+  \caption{Tableau sur la largeur autorisée}
+\end{table}
+\begin{verbatim}
+\begin{table}[H]
+  \centering
+  \renewcommand{\arraystretch}{1.3}
+  \begin{tabular}{>{\bfseries}L{1.5cm} C{3.5cm}  C{3.5cm} }
+    \toprule
+    \rowcolor{tableheader}
+    \textbf{Groupe} & \textbf{Appareil photo} & \textbf{Trépied} \\
+    \midrule
+    1 & Canon EOS 5D Mark III avec obj.\ de 20\,mm & Rodeon piXpert \\
+    \rowcolor{codebg}
+      ...
+    4 & Canon EOS 700D avec obj.\ de 10\,mm & Trépied avec Rollei 200 Mark II \\
+    \bottomrule
+  \end{tabular}
   \caption{Répartition du matériel par groupe}
+\end{table}
+\end{verbatim}
+\begin{table}[H]
+  \centering
+  \renewcommand{\arraystretch}{1.3}
+  \begin{tabular}{>{\bfseries}L{1.5cm} C{3.5cm}  C{3.5cm} }
+    \toprule
+    \rowcolor{tableheader}
+    \textbf{Groupe} & \textbf{Appareil photo} & \textbf{Trépied} \\
+    \midrule
+    1 & Canon EOS 5D Mark III avec obj.\ de 20\,mm & Rodeon piXpert \\
+    \rowcolor{codebg}
+    2 & QooCam 8K & Trépied standard \\
+    3 & Canon EOS 5D Mark III avec obj.\ de 14\,mm & Trépied avec Rollei 200 Mark II \\
+    \rowcolor{codebg}
+    4 & Canon EOS 700D avec obj.\ de 10\,mm & Trépied avec Rollei 200 Mark II \\
+    \bottomrule
+  \end{tabular}
+  \caption{Tableau avec largeur fixée}
 \end{table}
 
 
