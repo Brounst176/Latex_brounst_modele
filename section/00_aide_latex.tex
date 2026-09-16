@@ -383,16 +383,18 @@ for i in range(5):
 % === MATH =================================================================================
 \subsection{Fonction mathématique}
 
+\subsubsection{Boxed}
 \begin{equation}
     \boxed{m = F - \frac{k^TFR(M-S)}{k^T R(M-S)}}\\
     \label{colin}
 \end{equation}
+\subsubsection{Alignement}
 \begin{align*}
     x_m&=x_c+f\cdot\frac{r_{11}(X_M-X_S)+r_{21}(Y_M-Y_S)+r_{31}(Z_M-Z_S)}{r_{13}(X_M-X_S)+r_{23}(Y_M-Y_S)+r_{33}(Z_M-Z_S)}\\
     y_m&=y_c+f\cdot\frac{r_{12}(X_M-X_S)+r_{22}(Y_M-Y_S)+r_{32}(Z_M-Z_S)}{r_{13}(X_M-X_S)+r_{23}(Y_M-Y_S)+r_{33}(Z_M-Z_S)}\\
     z_m&=0
 \end{align*}
-
+\subsubsection{Description}
 \begin{align*}
     \descrVarEq{\scu^{cam}=(o,x,y,z)}{Système de coordonnée de la caméra}\\
     \descrVarEq{x,y}{Centre du capteur de l'image}\\
@@ -410,6 +412,10 @@ for i in range(5):
     &\textrm{(Distance focale $f$)}\\
     &\textrm{($x_c,y_c$ sont égales à 0 dans un modèle théorique)}\\
 \end{align*}
+\subsubsection{Suppression - va vers 0}
+$$ \Delta h = \frac{d'_{AB} \cdot \cos(\zeta_A) - d'_{BA} \cdot \cos(\zeta_B)}{2} + (1-k) \frac{\cancelto{0}{(d'_{AB} \cdot\sin \zeta_A)^2 - (d'_{BA} \cdot\sin \zeta_B)^2}}{4r} + \frac{(I_A - S_B) - (I_B - S_A)}{2} $$
+
+\subsubsection{Divers}
 \begin{equation}
     \label{eq:transdlt}
     L=\frac{-1}{\sqrt{L^2_9+L^2_{10}+L^2_{11}}}
