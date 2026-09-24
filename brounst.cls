@@ -487,7 +487,7 @@
 		\par\vspace{2cm}
 	\end{figure*}
 	\centering
-	\includegraphics[width=2.6cm]{latex_logo.png}\par
+	\titleimage\par
 	{\huge\bfseries\titlereport\par}
 	\bigskip
 	{\Large \versiondoc\par}
