@@ -1,0 +1,84 @@
+\documentclass[a4paper,titlepage, table]{article}
+
+\input{setting}
+
+
+% Changement des settings pour avoir des éléments spécifiques
+\usepackage[sfdefault]{roboto}
+\usepackage[scaled=0.95]{roboto-mono}
+
+
+\geometry{right=2.5cm, left=2.8cm, top=2.2cm, bottom=1.8cm}
+\titleformat{\section}
+  {\normalfont\LARGE\bfseries}
+  {\thesection}{1em}{}
+
+\begin{document}
+
+%====================================================================
+% PARAMÈTRES LOCAUX AU DOCUMENT
+%====================================================================
+
+% -- Listes (itemize) --------------------------------------------------
+\renewcommand{\labelitemi}{$\bullet$}
+\renewcommand{\labelitemii}{$\circ$}
+\renewcommand{\labelitemiii}{$-$}
+\renewcommand{\labelitemiv}{$\circ$}
+
+% -- Titres ----------------------------------------------------------------
+\titlespacing*{\subsubsection}{15pt}{\baselineskip}{0.2\baselineskip} % 1er élément indentation et 2ème espace en-dessous
+
+% -- Divers ------------------------------------------------------------------
+\tolerance=5000 %augementation de la tolérance des coupures
+
+%====================================================================
+% PAGE DE TITRE ET RÉSUMÉ (numérotation romaine)
+%====================================================================
+\input{section/00_titlepage_manuel.tex}
+% \input{section/00_titlepage_rapport_HESMASTER.tex}
+\myemptypage
+\newpage
+\pagenumbering{Roman}
+% \input{section/00_resume.tex}
+% \newpage
+
+
+%====================================================================
+% TABLE DES MATIÈRES ET LISTES
+%====================================================================
+\addcontentsline{toc}{subsection}{Table des matières}
+\tableofcontents
+\newpage
+\addcontentsline{toc}{subsection}{Table des figures}
+\listoffigures
+% \newpage
+\addcontentsline{toc}{subsection}{Liste des tableaux}
+\listoftables
+\newpage
+
+
+%====================================================================
+% EN-TÊTE ET PIED DE PAGE (numérotation arabe)
+%====================================================================
+\pagenumbering{arabic}
+\fancystandard
+% \fancyOnlyFoot
+
+%====================================================================
+% CONTENU
+%====================================================================
+\input{section/00_aide_latex.tex}
+
+% \newpage
+
+%====================================================================
+% BIBLIOGRAPHIE
+%====================================================================
+% \bibliographystyle{apalike-fr}
+% \renewcommand{\refname}{Bibliographie} %Pour les articles
+% \renewcommand{\bibname}{Bibliographie} %Pour les thèses/livres
+% \bibliography{biblio}
+% \nocite{*}
+
+
+\end{document}

@@ -18,12 +18,20 @@
 
 % -- Langue et police -------------------------------------------------
 \usepackage[french]{babel}
-\usepackage[T1]{fontenc}
+% \usepackage[T1]{fontenc}   % pdfLaTeX seulement (fontspec gère l'encodage)
 % \usepackage{lmodern}
-% \fontfamily{cmr}\selectfont
 \usepackage{helvet}
 \renewcommand{\familydefault}{\sfdefault}
-% \usepackage{fontspec}
+% \usepackage{fontspec}          % XeLaTeX ou LuaLaTeX obligatoire
+
+% \setmainfont{Cadastra-Regular}[
+%   Path = ./fonts/,
+%   Extension = .ttf,
+%   BoldFont       = Cadastra-Bold,
+%   ItalicFont     = Cadastra-Italic,
+%   BoldItalicFont = Cadastra-BoldItalic,
+% ]
+% Compiler en terminal latexmk rapport_standard.tex
 % \setmainfont{Comic Sans MS}
 % \usepackage{palatino}
 \usepackage{fancyhdr}
