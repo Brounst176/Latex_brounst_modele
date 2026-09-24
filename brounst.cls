@@ -1,7 +1,29 @@
+%====================================================================
+% brounst.cls -- Classe de document pour rapports, manuels et TM
+%====================================================================
+% Utilisation :
+%   \documentclass{brounst}            % a4paper + titlepage par défaut
+%   \documentclass[11pt]{brounst}      % toute option est transmise à article
+%
+% Pages de titre disponibles (à placer après \begin{document}) :
+%   \maketitleManuel      \maketitleHEIG     \maketitleHESMASTER
+%   \maketitleTM          \maketitleTMdeux   \maketitleSimple
+%   \maketitleEquipement
+%====================================================================
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{brounst}[2026/09/24 Modele brounst]
+
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
+\ProcessOptions\relax
+\PassOptionsToPackage{table}{xcolor} % \rowcolor dans les tableaux
+\LoadClass[a4paper,titlepage]{article}
+
 
 %====================================================================
-% INFORMATIONS DU DOCUMENT
+% INFORMATIONS DU DOCUMENT (valeurs par défaut)
 %====================================================================
+% À redéfinir dans le préambule du document, p. ex. :
+%   \renewcommand{\titlereport}{Mon titre}
 \newcommand{\titlereport}{Titre}
 \newcommand{\subtitle}{Nom du cours}
 \newcommand{\datedoc}{\today}
@@ -10,6 +32,14 @@
 \newcommand{\auteur}{Provençal le Gaulois}
 \newcommand{\expert}{Alexandre Astier}
 \newcommand{\nummemoire}{xxxx}
+\newcommand{\versiondoc}{Version 1}
+\newcommand{\studyname}{Nom de la filière}
+\newcommand{\logocompany}{heig_hes.jpg} % logo d'école / entreprise (dossier images/)
+\newcommand{\equipements}{Canon EOS 5D Mark III, QooCam 8K, Canon EOS 700D}
+\newcommand{\logiciels}{Autopano Giga, Hugin, QooCam Studio, Agisoft Metashape}
+
+\newcommand{\titlelogocompany}{\includegraphics[width=5cm,right]{\logocompany}}
+\newcommand{\titleimage}{\includegraphics[width=2.6cm]{latex_logo}}
 
 
 %====================================================================
@@ -17,12 +47,12 @@
 %====================================================================
 
 % -- Langue et police -------------------------------------------------
-\usepackage[french]{babel}
-% \usepackage[T1]{fontenc}   % pdfLaTeX seulement (fontspec gère l'encodage)
-% \usepackage{lmodern}
-\usepackage{helvet}
+\RequirePackage[french]{babel}
+% \RequirePackage[T1]{fontenc}   % pdfLaTeX seulement (fontspec gère l'encodage)
+% \RequirePackage{lmodern}
+\RequirePackage{helvet}
 \renewcommand{\familydefault}{\sfdefault}
-% \usepackage{fontspec}          % XeLaTeX ou LuaLaTeX obligatoire
+% \RequirePackage{fontspec}          % XeLaTeX ou LuaLaTeX obligatoire
 
 % \setmainfont{Cadastra-Regular}[
 %   Path = ./fonts/,
@@ -33,66 +63,66 @@
 % ]
 % Compiler en terminal latexmk rapport_standard.tex
 % \setmainfont{Comic Sans MS}
-% \usepackage{palatino}
-\usepackage{fancyhdr}
-\usepackage{lastpage}
-\usepackage{microtype} % gestion des césures (retour à la ligne des grands mots avec un -)
-\usepackage{ragged2e}  % Meilleure gestion des retours à la ligne
+% \RequirePackage{palatino}
+\RequirePackage{fancyhdr}
+\RequirePackage{lastpage}
+\RequirePackage{microtype} % gestion des césures (retour à la ligne des grands mots avec un -)
+\RequirePackage{ragged2e}  % Meilleure gestion des retours à la ligne
 
 % -- Mise en page / géométrie -----------------------------------------
-\usepackage{geometry}
-\usepackage[export]{adjustbox}
-\usepackage{graphicx}
+\RequirePackage{geometry}
+\RequirePackage[export]{adjustbox}
+\RequirePackage{graphicx}
 \graphicspath{ {./images/} }
 
 % -- Mathématiques ------------------------------------------------------
-\usepackage{amsmath}
-\usepackage{amssymb}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
 
 % -- Tableaux -------------------------------------------------------------
-\usepackage{multicol}
-\usepackage{multirow}
-\usepackage{array}
-\usepackage{esvect}
-\usepackage{tabularx}
-\usepackage{longtable}
-\usepackage{booktabs} % Tableau simplifié
-\usepackage{moreverb} % vertbatimtabl
+\RequirePackage{multicol}
+\RequirePackage{multirow}
+\RequirePackage{array}
+\RequirePackage{esvect}
+\RequirePackage{tabularx}
+\RequirePackage{longtable}
+\RequirePackage{booktabs} % Tableau simplifié
+\RequirePackage{moreverb} % vertbatimtabl
 
 % -- Figures / graphiques -------------------------------------------------
-\usepackage{tikz}
-\usepackage{caption}
-\usepackage{subcaption}
-\usepackage{float}
+\RequirePackage{tikz}
+\RequirePackage{caption}
+\RequirePackage{subcaption}
+\RequirePackage{float}
 \usetikzlibrary{positioning, arrows.meta, calc, 3d}
-\usepackage{pgfplots}
+\RequirePackage{pgfplots}
 \pgfplotsset{compat=1.17}
 
 % -- Listes ---------------------------------------------------------------
-\usepackage{enumitem}
+\RequirePackage{enumitem}
 
 % -- Code / listings --------------------------------------------------------
-\usepackage{listings}
-\usepackage{xcolor}
-\usepackage{tcolorbox}
+\RequirePackage{listings}
+\RequirePackage{xcolor}
+\RequirePackage{tcolorbox}
 
 % -- Titres de section ------------------------------------------------------
-\usepackage{titlesec}
+\RequirePackage{titlesec}
 
 % -- Références, liens et bibliographie --------------------------------------
-\usepackage{xparse}
-% \usepackage[hidelinks]{hyperref} % referencing inside document (click on links) - has to be loaded as last !
-\usepackage{hyperref} % voir color lien vers la fin du setting \hypersetup
-\usepackage{footmisc} % note de bas de page
-\usepackage{url}
-\usepackage{cleveref} % Paquet pour des références plus intelligentes
-\usepackage{alltt}
-\usepackage{cite} % Bibliographie
+\RequirePackage{xparse}
+% \RequirePackage[hidelinks]{hyperref} % referencing inside document (click on links) - has to be loaded as last !
+\RequirePackage{hyperref} % voir \hypersetup plus bas \hypersetup
+\RequirePackage{footmisc} % note de bas de page
+\RequirePackage{url}
+\RequirePackage{cleveref} % Paquet pour des références plus intelligentes
+\RequirePackage{alltt}
+\RequirePackage{cite} % Bibliographie
 
 % -- Divers -----------------------------------------------------------------
-\usepackage{afterpage} % page vide
-\usepackage{blindtext}
-\usepackage{cancel}
+\RequirePackage{afterpage} % page vide
+\RequirePackage{blindtext}
+\RequirePackage{cancel}
 
 %====================================================================
 % COULEURS ET LIENS
@@ -210,7 +240,7 @@
 %====================================================================
 % TABLEAUX
 %====================================================================
-\usepackage{etoolbox}
+\RequirePackage{etoolbox}
 % Taille de police générale pour TOUS les tableaux (tabular / tabularx) :
 % remplacer \small par \footnotesize ou \scriptsize ci-dessous pour réduire davantage.
 \AtBeginEnvironment{tabular}{\small}
@@ -444,3 +474,154 @@
 \title{\titlereport}
 \author{\auteur}
 \date{\datedoc}
+
+
+%====================================================================
+% PAGES DE TITRE
+%====================================================================
+% -- Manuel -------------------------------------------------------------
+\newcommand{\maketitleManuel}{%
+\begin{titlepage}
+	\begin{figure*}
+		\titlelogocompany
+		\par\vspace{2cm}
+	\end{figure*}
+	\centering
+	\includegraphics[width=2.6cm]{latex_logo.png}\par
+	{\huge\bfseries\titlereport\par}
+	\bigskip
+	{\Large \versiondoc\par}
+	\vfill
+	{\Large \auteur\par}
+	\datedoc
+\end{titlepage}}
+
+% -- Rapport HEIG-VD ----------------------------------------------------
+\newcommand{\maketitleHEIG}{%
+\begin{titlepage}
+	\begin{figure*}
+		\titlelogocompany
+		\par\vspace{2cm}
+	\end{figure*}
+	\centering
+	\titleimage
+	\par\vspace{1cm}
+	\par\noindent\rule{\textwidth}{0.4pt}\vspace{0.4cm}
+	{\Huge\bfseries \titlereport }\\[0.3cm]
+	{\LARGE \subtitle}\\[0.2cm]
+	\par\noindent\rule{\textwidth}{0.4pt}
+
+	{ \color{gray}\textit{ \auteur} \par}
+	\vfill
+	Professeur: \par
+	\prof
+
+	\vfill
+	{\large \datedoc\par}
+
+	\versiondoc
+\end{titlepage}}
+
+% -- Rapport HES-SO Master ---------------------------------------------
+\newcommand{\maketitleHESMASTER}{%
+\begin{titlepage}
+	\begin{figure*}
+		\includegraphics[width=3cm,right]{hes-so_master}
+	\end{figure*}
+	\centering
+	\titleimage
+	\par\noindent\rule{\textwidth}{0.4pt}
+	{\Huge\bfseries \titlereport\par}\vspace{0.2cm}
+	{\Large \subtitle\par}[0.2cm]
+	\par\noindent\rule{\textwidth}{0.4pt}
+
+	{\Large \textit{ \auteur} \par}
+	\vfill
+	Professeur \par
+	\prof
+
+	\vfill
+	{\large \datedoc\par}
+\end{titlepage}}
+
+% -- Travail de master (UNIGE / HES-SO) --------------------------------
+\newcommand{\maketitleTM}{%
+\begin{titlepage}
+	\titleimage
+
+	\par\noindent\rule{\textwidth}{0.1pt}
+	{\Huge\bfseries \titlereport\par}\vspace{0.2cm}
+	\par\noindent\rule{\textwidth}{0.4pt}
+
+	{\Large \bfseries \auteur \par}
+	\vfill
+	{\Large \textbf{\datedoc}\par}
+	{\Large Domaine Ingénierie et Architecture \par}
+	{\large Master conjoint UNIGE-HES-SO en développement territorial\par}
+	{\large Orientation Ingénierie géomatique HES-SO\par}
+	\vfill
+	{\small Directeur : \prof \par}
+	{\small Expert : \expert \par}
+	\vfill
+	{\small Mémoire n° : \nummemoire\par}
+
+	\vfill
+	\includegraphics[width=8cm, left]{unige_hes-so.jpg}
+\end{titlepage}}
+
+% -- Travail de master, variante 2 (Bachelor + Master) -----------------
+\newcommand{\maketitleTMdeux}{%
+\begin{titlepage}
+	\titleimage
+
+	\par\noindent\rule{\textwidth}{0.1pt}
+	{\Huge\bfseries \titlereport\par}\vspace{0.2cm}
+	{\Large\noindent \textsc{\studyname}\par}\vspace{0.2cm}
+	\par\noindent\rule{\textwidth}{0.4pt}
+
+	{\Large \bfseries \auteur \par}
+	\vfill
+	{\Large \textbf{\datedoc}\par}
+	{\Large Bachelor of Science HES-SO en Génie territorial\par}
+	{\large Géomatique et maîtrise foncière\par}
+	{\Large Master conjoint UNIGE-HES-SO en développement territorial\par}
+	{\large Orientation Ingénierie géomatique HES-SO\par}
+	\vfill
+	{\small Professeur : Dr. \prof \par}
+
+	\vfill
+	\vfill
+	\includegraphics[width=8cm, left]{\logocompany}
+\end{titlepage}}
+
+% -- Rapport avec équipements / logiciels -----------------------------
+\newcommand{\maketitleStandard}{%
+\begin{titlepage}
+	\begin{figure*}
+		\titlelogocompany
+	\end{figure*}
+	\centering
+	\vspace*{5cm}
+	\par\noindent\rule{\textwidth}{0.4pt}\vspace{0.4cm}
+	{\Huge\bfseries \titlereport }\\[0.3cm]
+	{\LARGE \subtitle}\\[0.2cm]
+	\par\noindent\rule{\textwidth}{0.4pt}
+
+	{\small\color{gray}\itshape \auteur}
+	\vfill
+	\begin{tabular}{ll}
+		\textbf{Équipements :} & \equipements \\[0.3em]
+		\textbf{Logiciels :}   & \logiciels \\
+	\end{tabular}
+
+	\vfill
+	{\large \datedoc \par}
+\end{titlepage}}
+
+% -- Titre simple (pas de page de titre séparée) ------------------------
+\newcommand{\maketitleSimple}{%
+	{\Huge\bfseries \titlereport\par}
+	\par\noindent\rule{\textwidth}{2pt}
+}
+
+\endinput

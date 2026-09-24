@@ -1,6 +1,4 @@
-\documentclass[a4paper,titlepage, table]{article}
-
-\input{setting}
+\documentclass{brounst}
 
 
 % Changement des settings pour avoir des éléments spécifiques
@@ -34,8 +32,9 @@
 %====================================================================
 % PAGE DE TITRE ET RÉSUMÉ (numérotation romaine)
 %====================================================================
-\input{section/00_titlepage_manuel.tex}
-% \input{section/00_titlepage_rapport_HESMASTER.tex}
+\maketitleManuel
+% \maketitleStandard
+% \maketitleHESMASTER
 \myemptypage
 \newpage
 \pagenumbering{Roman}
