@@ -458,9 +458,9 @@
   linkcolor=black, 
   urlcolor=link, 
   citecolor=black,						% Information sur le document
-  pdfauthor = {Della Casa Bruno},			% Auteurs
-  pdftitle = {résumé},			% Titre du document
-  pdfsubject = {résumé},		% Sujet
+  pdfauthor = {\auteur},			% Auteurs
+  pdftitle = {\titlereport},			% Titre du document
+  pdfsubject = {\subtitle},		% Sujet
   pdfkeywords = {latex},	% Mots-clefs
   pdfstartview={FitH}
 }					% ajuste la page à la largueur de l'écran
